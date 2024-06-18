@@ -1,5 +1,7 @@
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
+import br.com.alura.sreenmatch.calculos.CalculadoraDeTempo;
+
 
 public class Principal {
     public static void main(String[] args) {
@@ -23,7 +25,22 @@ public class Principal {
         lost.exibaFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
-        System.out.println("DUração: " + lost.getDuracaoEmMinutos());
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("DUração para maratonar: " + lost.getDuracaoEmMinutos());
+
+
+        Filme outroFilme = new Filme();
+        outroFilme.setNome("Avatar");
+        outroFilme.setAnoDeLancamento( 2023 );
+        outroFilme.setDuracaoEmMinutos( 200 );
+
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        // colocado em outro pacote e feito o import automatico
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(lost);
+        System.out.println(calculadora.getTempoTotal());
 
 
     }
